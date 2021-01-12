@@ -27,9 +27,13 @@ class CustomersController < ApplicationController
   # POST /customers.json
   def create
     @customer = Customer.new(customer_params)
-    @customer.save
-    flash.notice = "The customer record was created successfully."
-    redirect_to @customer
+    if @customer.save
+        flash.notice = "The customer record was created successfully."
+        redirect_to @customer
+    else
+        flash.alert = "Customer record could not be created."
+        render :new
+    end
 
    # @customer = Customer.new(customer_params)
 
@@ -41,15 +45,21 @@ class CustomersController < ApplicationController
        # format.html { render :new }
         #format.json { render json: @customer.errors, status: :unprocessable_entity }
       #end
-    end
+    #end
   end
 
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
-      @customer.update(customer_params)
-    flash.notice = "The customer record was updated successfully."
-    redirect_to @customer
+    if @customer.update(customer_params)
+      flash.notice = "The customer record was updated successfully."
+      redirect_to @customer
+      
+    else
+      flash.alert = "The customer record was not updated successfully."
+      render :edit
+    end
+    
 
     #respond_to do |format|
      # if @customer.update(customer_params)
@@ -57,8 +67,8 @@ class CustomersController < ApplicationController
       #else
        # format.html { render :edit }
         #format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
-    end
+     # end
+   # end
   end
 
   # DELETE /customers/1

@@ -1,5 +1,5 @@
 class Customer < ApplicationRecord
-    class Customer < ApplicationRecord
+   # class Customer < ApplicationRecord
         validates :first_name, presence: true
         validates :last_name, presence: true
         validates :phone,  presence: true
@@ -12,6 +12,6 @@ class Customer < ApplicationRecord
       def full_name
         "#{first_name} #{last_name}"
       end
-    end
+   # end
 
 end
