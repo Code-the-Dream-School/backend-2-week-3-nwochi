@@ -31,8 +31,10 @@ class CustomersController < ApplicationController
         flash.notice = "The customer record was created successfully."
         redirect_to @customer
     else
-        flash.alert = "Customer record could not be created."
-        render :new
+      flash.now.alert = @customer.errors.full_messages.to_sentence
+      render :new
+        # flash.alert = "Customer record could not be created."
+        # render :new
     end
 
    # @customer = Customer.new(customer_params)
@@ -54,11 +56,18 @@ class CustomersController < ApplicationController
     if @customer.update(customer_params)
       flash.notice = "The customer record was updated successfully."
       redirect_to @customer
-      
     else
-      flash.alert = "The customer record was not updated successfully."
+      flash.now.alert = @customer.errors.full_messages.to_sentence
       render :edit
     end
+    # if @customer.update(customer_params)
+    #   flash.notice = "The customer record was updated successfully."
+    #   redirect_to @customer
+      
+    # else
+    #   flash.alert = "The customer record was not updated successfully."
+    #   render :edit
+    # end
     
 
     #respond_to do |format|
