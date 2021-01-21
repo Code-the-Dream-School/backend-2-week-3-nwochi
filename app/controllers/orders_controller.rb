@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
             render :new
         # flash.alert = "Customer record could not be created."
         # render :new
-    end
+        end
         # @order = Order.new(customer_params) #customer params will include all of the customer argument/parameters/attributes
         #     if @order.save
         #         flash.notice = "The order record was created successfully."

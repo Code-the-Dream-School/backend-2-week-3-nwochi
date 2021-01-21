@@ -13,15 +13,15 @@
   
   <div class="field">
     <select name="customers" multiple>
-        <option><%= f.full_name %></option>
+        <option><%= @order.customer_id %></option>
     </select>
     
     <select name="product name" multiple>
-        <option><%= f.product_name %></option>
+        <option><%= @order.product_name %></option>
     </select>
     
     <select name="quantity" multiple>
-        <option><%= f.product_count %></option>
+        <option><%= @order.product_count %></option>
     </select>
     
   </div>
